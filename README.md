@@ -2,12 +2,12 @@
 
 Para instalar los paquetes necesarios y utilizar el proyecto, en la carpeta raiz escribir el comando:
 
-$ npm install
+``` npm install```
 
-Luego en la carpeta de frontend, el comando
+Luego en la carpeta de frontend, el comando:
 
-$ npm start
+``` npm start```
 
 Y en la carpeta de backend, el comando:
 
-$node server.js
+```node server.js ```
