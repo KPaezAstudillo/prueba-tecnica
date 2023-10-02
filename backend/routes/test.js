@@ -17,7 +17,7 @@ module.exports = (Test) => {
     }
   });
 
-  // Ruta GET para obtener detalles de un solo registro
+  // Ruta GET de un solo registro
   router.get("/detalles/:id", async (req, res) => {
     try {
       const producto = await Test.findById(req.params.id);
@@ -35,34 +35,32 @@ module.exports = (Test) => {
 
 
   // Ruta POST
-  router.post("/", upload.single("imagen"), async (req, res) => {
+  router.post("/", upload.array("imagen", 4), async (req, res) => {
     try {
       const { nombre, categoria, precio, aviso, tituloImagen } = req.body;
-
-
-      const imagen = req.file;
-
-      // Crea un nuevo documento Test con los datos y la imagen
+  
+      const imagenes = req.files; // Utilizamos req.files en lugar de req.file para obtener un array de imágenes
+  
+      // Crea un nuevo documento Test con los datos y las imágenes
       const newTest = new Test({
         nombre,
         categoria,
         precio,
         aviso,
         tituloImagen,
-        imagenes: [
-          {
-            data: imagen.buffer,
-            contentType: imagen.mimetype,
-          },
-        ],
+        imagenes: imagenes.map((imagen) => ({
+          data: imagen.buffer,
+          contentType: imagen.mimetype,
+        })),
       });
-
+  
       await newTest.save();
       res.status(201).json(newTest);
     } catch (error) {
       res.status(500).json({ error: "Error al crear el nuevo documento." });
     }
   });
+  
 
   // Ruta DELETE
   router.delete("/:id", async (req, res) => {
