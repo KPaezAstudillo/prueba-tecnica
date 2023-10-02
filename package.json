@@ -4,8 +4,10 @@
     "bootstrap-icons": "^1.11.1",
     "cors": "^2.8.5",
     "dotenv": "^16.3.1",
+    "dropify": "^0.2.2",
     "history": "^5.3.0",
     "multer": "^1.4.5-lts.1",
+    "react-dropzone": "^14.2.3",
     "xlsx": "^0.18.5"
   }
 }

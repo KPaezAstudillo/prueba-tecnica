@@ -1,10 +1,10 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 //Esquema de datos
 const testSchema = new mongoose.Schema({
   nombre: {
     type: String,
-    required: true, 
+    required: true,
   },
   categoria: {
     type: String,
@@ -31,6 +31,6 @@ const testSchema = new mongoose.Schema({
 });
 
 //Modelo creado a partir del esquema
-const TestModel = mongoose.model('Test', testSchema);
+const TestModel = mongoose.model("Test", testSchema);
 
 module.exports = TestModel;
